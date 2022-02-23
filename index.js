@@ -8,4 +8,9 @@ express()
   .set('view engine', 'ejs')
   .get('/', (req, res) => res.render('pages/index'))
   .get('/test', (req, res) => res.json({"test":"testmessage"}))
+  .get('/testfeed', (req, res) => 
+  {
+    // res.json({"test":"testmessage"})
+    res.sendFile(path.join(__dirname, 'example_feed_xml_rss.xml'));
+  })
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
