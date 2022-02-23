@@ -9,7 +9,10 @@ express()
   .set("view engine", "ejs")
   .get("/", (req, res) => res.render("pages/index"))
   .get("/test", (req, res) => res.json({ test: "testmessage" }))
-  .get("/testfeed", (req, res) => {
+  .get("/testfeedfile", (req, res) => {
+    res.sendFile(path.join(__dirname, 'example_feed_xml_rss.xml'));
+  })
+  .get("/testfeedjson", (req, res) => {
     // res.sendFile(path.join(__dirname, 'example_feed_xml_rss.xml'));
     const feedResult = require("./feedResult.json");
     const xmlOptions = {
